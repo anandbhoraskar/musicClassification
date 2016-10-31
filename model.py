@@ -269,17 +269,20 @@ def fillSongs(numNeeded):
 
 def getData(numPerGenre):
     rocksongs, jazzsongs = fillSongs(numPerGenre)
-    assert (len(rocksongs) == numPerGenre and len(jazzsongs) == numPerGenre)  # if false then need more data
     return rocksongs, jazzsongs
+    assert (len(rocksongs) == numPerGenre and len(jazzsongs) == numPerGenre)  # if false then need more data
 
 def main():
-    metalsongs, jazzsongs = getData(100)
+    metalsongs, jazzsongs = getData(250)
     output = open('jazz.pkl', 'wb')
     pickle.dump(jazzsongs, output)
     output.close()
     output = open('metal.pkl', 'wb')
     pickle.dump(metalsongs, output)
     output.close()
+    fileobj = open('jazz.pkl', 'r')
+    metalsongs = pickle.load(fileobj)
+    print metalsongs
 
 if __name__ == "__main__":
     main()

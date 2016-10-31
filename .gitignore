@@ -1,5 +1,5 @@
 .idea/*
 MillionSongSubset/*
 millionsongsubset_full.tar.gz
-jazz.pkl
-metal.pkl
+*.pkl
+*.pyc
