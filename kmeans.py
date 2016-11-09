@@ -102,11 +102,11 @@ def findModel(numCentroids):
     print "rockRight: ", rockRight
     print "rockWrong: ", rockWrong
     
-rocksongs, jazzsongs = model.getData(100)
-trainRock = rocksongs[:70]
-testRock = rocksongs[70:]
-trainJazz = jazzsongs[:70]
-testJazz = jazzsongs[70:]
+rocksongs, jazzsongs = model.getData(250)
+trainRock = rocksongs[:200]
+testRock = rocksongs[200:]
+trainJazz = jazzsongs[:200]
+testJazz = jazzsongs[200:]
 
 findModel(5)
 findModel(10)

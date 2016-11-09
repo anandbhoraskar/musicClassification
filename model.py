@@ -60,7 +60,7 @@ def getData(numPerGenre):
             print 'Loaded rock songs'
     else:
         rocksongs, jazzsongs = fillSongs(numPerGenre)
-    return rocksongs, jazzsongs
+    return rocksongs[:numPerGenre], jazzsongs[:numPerGenre]
     assert (len(rocksongs) == numPerGenre and len(jazzsongs) == numPerGenre)  # if false then need more data
 
 
