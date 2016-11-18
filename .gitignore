@@ -3,3 +3,4 @@ MillionSongSubset/*
 millionsongsubset_full.tar.gz
 *.pkl
 *.pyc
+.DS_Store
