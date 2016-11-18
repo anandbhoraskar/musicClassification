@@ -1,5 +1,3 @@
-import h5py
-import os
 import random
 import numpy as np
 import model
@@ -33,7 +31,7 @@ def getFeatureVectors(songs, perSong):
     featureVectors = np.empty((0, perSong * 12))
     for song in songs:
         fv = randomSampleFeatures(song, perSong)
-        if (len(fv) == perSong):
+        if len(fv) == perSong:
             featureVectors = np.append(featureVectors, np.reshape(fv, (1, perSong * 12)), axis=0)
     return featureVectors
 
@@ -62,8 +60,8 @@ def getTrainingData(rocksongs, jazzsongs, perSong, div):
 
 
 rocksongs, jazzsongs = model.getData(250)
-training_data, testing_data = getTrainingData(rocksongs, jazzsongs, 90, 200)
-clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(1080 * 2, 1080, 90, 30))
+training_data, testing_data = getTrainingData(songs, 100, 200)
+clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(100 * 12 * 2, 120, 60, 30))
 
 clf.fit(training_data[0], training_data[1])
 pred = clf.predict(testing_data[0])
