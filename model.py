@@ -1,7 +1,7 @@
 import os
 import cPickle as pickle
 import numpy as np
-from Song import Song
+from Song_bin import Song
 
 
 def fillSongs(numNeeded):

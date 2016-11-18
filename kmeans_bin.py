@@ -6,7 +6,7 @@ import numpy as np
 from scipy.cluster.vq import whiten
 from scipy.cluster.vq import kmeans
 from numpy.linalg import norm
-import model_bin
+import model
 
 
 def randomSampleFeatures(song, numSamples):
@@ -102,7 +102,7 @@ def findModel(numCentroids):
     print "rockRight: ", rockRight
     print "rockWrong: ", rockWrong
     
-rocksongs, jazzsongs = model_bin.getData(250)
+rocksongs, jazzsongs = model.getData(250)
 trainRock = rocksongs[:200]
 testRock = rocksongs[200:]
 trainJazz = jazzsongs[:200]
