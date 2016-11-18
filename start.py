@@ -32,4 +32,17 @@ alltags = []
 for tag in tags:
 	alltags.append(tag)
 
-print alltags
+# print alltags
+
+mfcc2d = f['analysis']['segments_timbre']
+# print type(mfcc2d)
+
+featureVectors = []
+for i in range(len(mfcc2d)):
+	item = mfcc2d[i]
+	featureVectors.append(item)
+
+fV = np.asarray(featureVectors)
+
+print fV
+print np.size(fV)

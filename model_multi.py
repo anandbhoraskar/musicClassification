@@ -1,7 +1,7 @@
 import os
 import cPickle as pickle
 import numpy as np
-from Song import Song
+from song_multi import Song
 
 
 def fillSongs(numNeeded):
@@ -38,8 +38,8 @@ def fillSongs(numNeeded):
                     fpath = name2 + "/" + fname
                     print fpath
                     print min(len(rocksongs), len(jazzsongs))
-                    if len(rocksongs) >= numNeeded and len(jazzsongs) >= numNeeded:
-                        return rocksongs[:numNeeded], jazzsongs[:numNeeded]
+                    if len(rocksongs) >= numNeeded and len(jazzsongs) >= numNeeded and len(popsongs) >= numNeeded and len(hiphopsongs) >= numNeeded and len(metalsongs) >= numNeeded:
+                        return rocksongs[:numNeeded], hiphopsongs[:numNeeded], popsongs[:numNeeded], jazzsongs[:numNeeded], metalsongs[:numNeeded]
                     needJazz = len(jazzsongs) < numNeeded
                     needRock = len(rocksongs) < numNeeded
                     needPop = len(popsongs) < numNeeded
@@ -62,12 +62,12 @@ def fillSongs(numNeeded):
                         if (len(currsong.featureVectors) > 0):
                             rocksongs.append(currsong)
 
-    tmp = {rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs}
-    return tmp
+    return rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs
+    #return tmp
 
-    print tmp
-    print "paused"
-    raw_input()
+    #print tmp
+    #print "paused"
+    #raw_input()
 
 
 def getData(numPerGenre):
