@@ -56,7 +56,19 @@ def getFeatures(songList):
             features.append(item)
     return features
 
+def classify(song, classifier):
+    total = 0
+    #record= []
+    for featureVector in song.featureVectors:
+        prediction = classifier.decision_function(featureVector)[0] #the confidence value
+        total+=prediction
+        #record.append(prediction)
+    #negative means 0 means rock, positive means 1 means jazz
+    #print "total: ", total, "\nrecord: ", record
+    netPrediction = 0 if total <0 else 1
+    return netPrediction
 
+'''
 def predictSVM(svmOVR, rockTest, hiphopTest, popTest, jazzTest, metalTest):
 	testMatrix = []
 
@@ -118,3 +130,4 @@ print testResult
 print testPredict
 
 print "Number of correct values out of 25 is ", correct
+'''
