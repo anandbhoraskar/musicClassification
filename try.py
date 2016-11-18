@@ -49,7 +49,12 @@ def getSVM_OVR(rockTrain, hiphopTrain, popTrain, jazzTrain, metalTrain):
 	svmOVR.fit(trainMatrix,labels)
 	return svmOVR
 
-# def classify(song, SVMobj)
+def getFeatures(songList):
+    features=[]
+    for song in songList:
+        for item in song.featureVectors:
+            features.append(item)
+    return features
 
 
 def predictSVM(svmOVR, rockTest, hiphopTest, popTest, jazzTest, metalTest):
@@ -75,31 +80,33 @@ def predictSVM(svmOVR, rockTest, hiphopTest, popTest, jazzTest, metalTest):
 
 	return testPredict
 
-rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs = model.getData(2)
-trainRock = rocksongs[:1]
-testRock = rocksongs[1:]
-trainHipHop = hiphopsongs[:1]
-testHipHop = hiphopsongs[1:]
-trainPop = popsongs[:1]
-testPop = popsongs[1:]
-trainJazz = jazzsongs[:1]
-testJazz = jazzsongs[1:]
-trainMetal = metalsongs[:1]
-testMetal = metalsongs[1:]
+rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs = model.getData(25)
+trainRock = getFeatures(rocksongs[:20])
+testRock = getFeatures(rocksongs[20:])
+trainHipHop = getFeatures(hiphopsongs[:20])
+testHipHop = getFeatures(hiphopsongs[20:])
+trainPop = getFeatures(popsongs[:20])
+testPop = getFeatures(popsongs[20:])
+trainJazz = getFeatures(jazzsongs[:20])
+testJazz = getFeatures(jazzsongs[20:])
+trainMetal = getFeatures(metalsongs[:20])
+testMetal = getFeatures(metalsongs[20:])
 
-# testResult = []
-# for i in range(1,5):
-# 	testResult.append(0)
-# for i in range(6,10):
-# 	testResult.append(1)
-# for i in range(11,15):
-# 	testResult.append(2)
-# for i in range(16,20):
-# 	testResult.append(3)
-# for i in range(20,25):
-# 	testResult.append(4)		
+testResult = []
+for i in range(0,5):
+	testResult.append(0)
+for i in range(0,5):
+	testResult.append(1)
+for i in range(0,5):
+	testResult.append(2)
+for i in range(0,5):
+	testResult.append(3)
+for i in range(0,5):
+	testResult.append(4)		
 
-print type(trainRock)
+# testResult = [0,1,2,3,4]
+
+# print type(trainRock)
 # print type(labels)
 
 songSVM_OVR = getSVM_OVR(trainRock, trainHipHop, trainPop, trainJazz, trainMetal)
@@ -107,4 +114,7 @@ testPredict = predictSVM(songSVM_OVR, testRock, testHipHop, testPop, testJazz, t
 
 correct = np.sum(testPredict == testResult)
 
-print "Number of correct values out of 250 is ", correct
+print testResult
+print testPredict
+
+print "Number of correct values out of 25 is ", correct
