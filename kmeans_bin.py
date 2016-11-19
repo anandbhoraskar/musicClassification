@@ -88,19 +88,20 @@ def getValidationError(firstTest, secondTest, firstCentroids, secondCentroids):
 
 def findModel(numCentroids):
 
-    print "/n/nNEW TESTING ROUND WITH ", numCentroids, "CENTROIDS"
-    print "GETTING CENTROIDS: ROCK"
+    print "/n/nNumber of centroids: ", numCentroids
     rock_centroids, rock_distortion = getCentroids(trainRock, numCentroids)
-    print "GETTING CENTROIDS: JAZZ"
     jazz_centroids, jazz_distortion = getCentroids(trainJazz, numCentroids)
 
 
-    print "TESTING"
+    print "Validating with centroids = ", numCentroids
     jazzRight, jazzWrong, rockRight, rockWrong = getValidationError(testJazz, testRock, jazz_centroids, rock_centroids)
-    print "jazzRight: ", jazzRight
-    print "jazzWrong: ", jazzWrong
+    print 'rock'
     print "rockRight: ", rockRight
     print "rockWrong: ", rockWrong
+    print
+    print 'jazz'
+    print "correct: ", jazzRight
+    print "incorrect: ", jazzWrong
     
 rocksongs, jazzsongs = model.getData(250)
 trainRock = rocksongs[:200]

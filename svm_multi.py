@@ -133,8 +133,8 @@ def get_white_data(songs, numTrain):
     assert (len(songTestFeatures) == len(whiteSongTest))
     return whiteSongTrain, whiteSongTest, whiteTest
 
-rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs = model.getData(25)
-numTrain = 20
+rocksongs, hiphopsongs, popsongs, jazzsongs, metalsongs = model.getData(75)
+numTrain = 60
 train = []
 whiteSongTrain = []
 whiteSongTest = []

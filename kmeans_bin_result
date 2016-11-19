@@ -1,0 +1,38 @@
+Loaded jazz songs
+Loaded rock songs
+/n/nNumber of centroids:  5
+Validating with centroids =  5
+rock
+rockRight:  26
+rockWrong:  24
+
+jazz
+correct:  32
+incorrect:  18
+/n/nNumber of centroids:  10
+Validating with centroids =  10
+rock
+rockRight:  29
+rockWrong:  21
+
+jazz
+correct:  25
+incorrect:  25
+/n/nNumber of centroids:  20
+Validating with centroids =  20
+rock
+rockRight:  31
+rockWrong:  19
+
+jazz
+correct:  27
+incorrect:  23
+/n/nNumber of centroids:  40
+Validating with centroids =  40
+rock
+rockRight:  34
+rockWrong:  16
+
+jazz
+correct:  34
+incorrect:  16
