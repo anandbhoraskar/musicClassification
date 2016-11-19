@@ -73,7 +73,7 @@ def confusion_matrix(actual, pred):
 
 songs = list(model_multi.getData(250))
 training_data, testing_data = getTrainingData(songs, 100, 200)
-clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(600, 300, 150, 30))
+clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(2400, 120, 60, 30))
 
 clf.fit(training_data[0], training_data[1])
 pred = clf.predict(testing_data[0])
