@@ -65,7 +65,7 @@ def confusion_matrix(actual, pred):
     return matrix  # row : actual col: predicted
 
 rocksongs, jazzsongs = model.getData(250)
-training_data, testing_data = getTrainingData(songs, 100, 200)
+training_data, testing_data = getTrainingData(rocksongs, jazzsongs, 90, 200)
 clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(100 * 12 * 2, 120, 60, 30))
 
 clf.fit(training_data[0], training_data[1])
