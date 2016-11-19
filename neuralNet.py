@@ -58,6 +58,11 @@ def getTrainingData(rocksongs, jazzsongs, perSong, div):
     testing_data = shuffle(testRock, testJazz)
     return training_data, testing_data
 
+def confusion_matrix(actual, pred):
+    matrix = np.zeros((5, 5))
+    for (x, y) in zip(actual, pred):
+        matrix[x, y] += 1
+    return matrix  # row : actual col: predicted
 
 rocksongs, jazzsongs = model.getData(250)
 training_data, testing_data = getTrainingData(songs, 100, 200)
@@ -66,4 +71,5 @@ clf = MLPClassifier(solver='lbfgs', hidden_layer_sizes=(100 * 12 * 2, 120, 60, 3
 clf.fit(training_data[0], training_data[1])
 pred = clf.predict(testing_data[0])
 
-sum(testing_data[1] == pred)
+print sum(testing_data[1] == pred), (float)(sum(testing_data[1] == pred))/len(pred)
+print confusion_matrix(testing_data[1], pred)
